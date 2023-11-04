@@ -21,19 +21,15 @@ $ echo "2023-10-28: Started developing a new feature." >> mydiary/diary.txt
 
 29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354 (feature-newFunc)
 $ git add mydiary/diary.txt
-warning: in the working copy of 'mydiary/diary.txt', LF will be replaced by CRLF the next time Git touches it
 
 29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354 (feature-newFunc)
 $ git commit -m "Added diary entry for feature work"
-[feature-newFunc dc53783] Added diary entry for feature work
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
 29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354 (feature-newFunc)
 $ echo "2023-10-29: Continued work on the new feature." >> mydiary/diary.txt
 
 29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354 (feature-newFunc)
 $ git add mydiary/diary.txt
-warning: in the working copy of 'mydiary/diary.txt', LF will be replaced by CRLF the next time Git touches it
 
 29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354 (feature-newFunc)
 $ git commit -m "Added another diary entry for feature work"
@@ -60,10 +56,6 @@ $ git checkout main
 Already on 'main'
 Your branch is ahead of 'origin/main' by 2 commits.
   (use "git push" to publish your local commits)
-
-29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354 (main)
-$ git pull origin main
-fatal: unable to access 'https://github.com/mitergpt/sjtu-cs7354/': Recv failure: Connection was aborted
 
 29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354 (main)
 $ git pull origin main
@@ -397,16 +389,7 @@ $ cd frontend
 $ nano styles.css
 
 29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (main)
-$ nano styles.css
-
-29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (main)
-$ nano styles.css
-
-29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (main)
 $ git add styles.css
-
-29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (main)
-$ git commit -m "change ^C
 
 29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (main)
 $ git commit -m "styles.css"
@@ -422,19 +405,6 @@ Switched to branch 'feature-upload'
 
 29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (feature-upload)
 $ git diff main
-
-29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (feature-upload)
-$ cd frontend
-bash: cd: frontend: No such file or directory
-
-29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (feature-upload)
-$ nano styles.css
-
-29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (feature-upload)
-$ nano styles.css
-
-29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (feature-upload)
-$ git diff main
 diff --git a/frontend/styles.css b/frontend/styles.css
 index 44c9a60..2a03b22 100644
 --- a/frontend/styles.css
@@ -442,8 +412,6 @@ index 44c9a60..2a03b22 100644
 @@ -1,3 +1,3 @@
 -body { font-family: 'Times New Roman';}
 +body { font-family: trial;}
-
-
 
 29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (feature-upload)
 $ git checkout main
@@ -453,15 +421,14 @@ Your branch is ahead of 'origin/main' by 1 commit.
   (use "git push" to publish your local commits)
 
 29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (main)
-$ git merge feature-upload
-Already up to date.
-
-29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (main)
 $ cd frontend
-bash: cd: frontend: No such file or directory
 
 29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (main)
 $ nano styles.css
+
+29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (main)
+$ git merge feature-upload
+Already up to date.
 
 29129@DESKTOP-FOL64BN MINGW64 ~/sjtu-cs7354/frontend (main)
 $ git add styles.css
