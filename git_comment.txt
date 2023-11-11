@@ -1,0 +1,203 @@
+实验一
+# 克隆仓库
+git clone https://github.com/mitergpt/sjtu-cs7354.git
+
+# 进入仓库目录
+cd sjtu-cs7354
+
+# 创建并切换到新分支 feature-newFunc
+git checkout -b feature-newFunc
+
+# 打开 diary.txt 文件并添加第一次条目
+echo "2023-10-28: Started developing a new feature." >> mydiary/diary.txt
+
+# 添加更改到暂存区
+git add mydiary/diary.txt
+
+# 提交第一次更改
+git commit -m "Added diary entry for feature work"
+
+# 打开 diary.txt 文件并添加第二次条目
+echo "2023-10-29: Continued work on the new feature." >> mydiary/diary.txt
+
+# 添加更改到暂存区
+git add mydiary/diary.txt
+
+# 提交第二次更改
+git commit -m "Added another diary entry for feature work"
+
+# 获得两次提交的hash值
+git log
+
+# 合并feature-newFunc分支上的两次提交
+git merge commit1 commit2
+
+# 切换回 main 分支
+git checkout main
+
+# 合并 feature-newFunc 分支到 main 分支
+git merge feature-newFunc
+
+# 推送更改到远程仓库
+git push origin main
+实验二
+#切入tests文件
+cd    tests
+
+#修改node.txt的内容
+nano   node.txt
+
+# 添加修改到暂存区 
+git add node.txt
+
+# 提交到本地仓库
+git commit -m "Added new approach details."
+
+#获取提交的hash值
+git log
+commit 3d3de90b6229d83231e8e6b67b8c0c65267cf987 (HEAD -> experiment)
+Author: mitergpt <2912935774@qq.com>
+Date:   Sat Nov 4 19:13:03 2023 +0800
+Added new approach details.
+
+# 切换回main
+git checkout main
+     
+#拉取最新的main
+git pull origin main
+    
+#应用选中的提交,使用cherry-pick将分支上的修改应用到main上面，并不会产生新的提交
+git cherry-pick 3d3de90b6229d83231e8e6b67b8c0c65267cf987
+
+#将版本push到github上面
+git push origin main
+
+实验三
+#切换到dev分支
+git checkout dev
+
+#进行四次修改
+cd backend
+nano project.txt
+git add project.txt
+git push -m “first change”
+
+nano project.txt
+git add project.txt
+git push -m “Add new content”
+
+nano project.txt
+git add project.txt
+git push -m “Some content was added repeatedly”
+
+nano project.txt
+git add project.txt
+git push -m “Mistakenly added irrelevant content”
+
+#检查现在的提交历史
+git log
+commit 20890ae8f4ed10cfeee0148b091d9854e6c98a12 (HEAD -> dev)
+Author: mitergpt <2912935774@qq.com>
+Date:   Sat Nov 11 10:05:41 2023 +0800
+
+    Mistakenly added irrelevant content
+
+commit 5fe770bcb3374a262d74bb5ab1eec2b10f680cbe
+Author: mitergpt <2912935774@qq.com>
+Date:   Sat Nov 11 10:03:30 2023 +0800
+
+    Some content was added repeatedly
+
+commit c6604c80f0563cf1f070f2c9b88341bc5c7f76ba (origin/dev)
+Author: mitergpt <2912935774@qq.com>
+Date:   Sat Nov 4 21:35:22 2023 +0800
+
+    Add new content
+
+commit 41ac788145a9ccfef745803f7d30ad0245224cf1
+Author: mitergpt <2912935774@qq.com>
+Date:   Sat Nov 4 21:25:40 2023 +0800
+
+    first change
+
+#保留第三次和第四次提交记录的情况下，回到第二次提交
+git revert c6604c80f0563cf1f070f2c9b88341bc5c7f76ba
+#再次保存并提交
+git add  project.txt
+git commit -m "answer of dev"
+#推送到远端仓库的dev分支
+git push origin dev
+
+实验四
+#切换到main分支
+git checkout main
+#切换到style.css文件，修改在styles.css文件中修改body的字体（第一行）为：body { font-family: 'Times New Roman'; }
+ cd  frontend
+nano style.css
+#提交这个分支
+git add style.css
+git commit -m “250”
+#切换到feature-upload分支
+git checkout feature-upload
+# 查看 feature-upload 与 main 分支之间的差异
+git diff main
+#切换到main分支
+git checkout main
+#合并feature-upload分支到main
+git merge feature-upload
+#解决冲突之后提交
+git add .
+git commit -m "Merge feature-upload into main"
+#push到远端仓库
+git push origin main
+
+实验五
+#创建并切换到documentation分支
+git checkout -b documentation
+#  添加了一个新的INSTALL_GUIDE.md文件，描述了如何安装该项目。
+nano INSTALL_GUIDE.md
+git add INSTALL_GUIDE.md
+git commit -m "INSTALL_GUIDE.md"
+#  更新了PROJECT_OVERVIEW.md，增加了一些关于项目的新功能的描述。
+nano  PROJECT_OVERVIEW.md
+git add PROJECT_OVERVIEW.md
+git commit -m "PROJECT_OVERVIEW.md"
+#  添加了一个CONTRIBUTING_GUIDE.md文件，为其他开发者提供了如何为该项目贡献代码的指南。
+nano  CONTRIBUTING_GUIDE.md
+git add CONTRIBUTING_GUIDE.md
+git commit -m "CONTRIBUTING_GUIDE.md"
+# 修复了PROJECT_OVERVIEW.md中的一个小错误。。
+nano  PROJECT_OVERVIEW.md
+git add PROJECT_OVERVIEW.md
+git commit -m "PROJECT_OVERVIEW.md"
+#重新组合和交换之前的提交
+git rebase -i HEAD~4
+#修改pick行
+pick 6417f75 INSTALL_GUIDE.md 
+pick c19d188 PROJECT_OVERVIEW.md
+ pick 3371f34 CONTRIBUTING_GUIDE.md pick b785ad9 PROJECT_OVERVIEW.md_amend
+这样的pick修改为如下：
+pick 3371f34 CONTRIBUTING_GUIDE.md pick b785ad9 
+pick 6417f75 INSTALL_GUIDE.md
+pick c19d188 PROJECT_OVERVIEW.md
+Squash 3371f34 CONTRIBUTING_GUIDE.md pick b785ad9 
+#执行重组
+git rebase --continue
+#解决冲突
+nano PROJECT_OVERVIEW.md
+#暂存一下
+git add PROJECT_OVERVIEW.md
+#继续执行重组
+git rebase --continue
+#回到main分支，并拉取最新的
+git checkout main
+git pull origin main
+#完成重组后，将更改合并回main分支
+git merge documentation
+#放到documentation文件夹里面，然后提交
+git mv CONTRIBUTING_GUIDE.md INSTALL_GUIDE.md PROJECT_OVERVIEW.md documentation/
+git add documentation
+git commit -m "Move guide files to documentation and tests folders"
+#将更改push回远程仓库
+git push origin main
+
