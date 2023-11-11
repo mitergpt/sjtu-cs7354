@@ -1,3 +1,8 @@
 This is the start of our project.
+<<<<<<< HEAD
 third change
 fourth change
+=======
+1 change
+2 change
+>>>>>>> parent of c6604c8 (Add new content)
